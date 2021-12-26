@@ -1,7 +1,8 @@
 $name=$args[0]
 $year=Get-Date -UFormat "%Y"
-mkdir $name; cd $name; git init
-echo @"
+$folder_name=$name.ToLower().replace(' ', '-')
+mkdir $folder_name; cd $folder_name; git init
+Set-Content LICENSE @"
 Copyright (c) $year Andrew Li
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,8 +22,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-"@ > LICENSE
-echo @"
+"@
+Set-Content README.md @"
 # $name
 
 
@@ -31,4 +32,4 @@ echo @"
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) 
 
-"@ > README.md
+"@
